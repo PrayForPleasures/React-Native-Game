@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -23,7 +24,15 @@ export default function App() {
 				>
 					{(props) => <FirstScreen {...props} />}
 				</Stack.Screen>
-				<Stack.Screen name="Game" options={{ title: "Игра пошла" }}>
+				<Stack.Screen
+					name="Game"
+					options={{
+						title: "Игра пошла",
+						headerStyle: {
+							backgroundColor: "lightgreen",
+						},
+					}}
+				>
 					{(props) => <Game {...props} />}
 				</Stack.Screen>
 			</Stack.Navigator>

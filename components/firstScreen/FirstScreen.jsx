@@ -1,21 +1,61 @@
-import { TouchableOpacity, StyleSheet, View, Image, Text } from "react-native";
+import { useRef } from "react";
+import {
+	Animated,
+	TouchableOpacity,
+	StyleSheet,
+	View,
+	Image,
+	Text,
+	Button,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
+import { animated, useSpring } from "@react-spring/native";
 
 export default function FirstScreen({ navigation }) {
+	const value = useRef(new Animated.Value(0)).current;
+	const startAnimate = () => {
+		Animated.timing(value, {
+			toValue: 5,
+			duration: 10000,
+			useNativeDriver: true,
+		}).start();
+	};
+
+	const startPlayButton = () => {
+		startAnimate();
+		setTimeout(() => {
+			navigation.navigate("Game");
+		}, 1200);
+	};
 	return (
 		<LinearGradient
 			style={styles.startScreen__box}
-			colors={["#00ff02", "#ffffff", "#00ff02"]}
+			colors={["#00ff02", "whitesmoke", "#00ff02"]}
 			start={{ x: 1, y: 0.15 }}
 		>
-			<Image
-				style={styles.startScreen__image}
-				source={require("../../images/sheep.png")}
-			/>
+			<Animated.View
+				style={{
+					transform: [
+						{
+							scale: value.interpolate({
+								inputRange: [0, 0.5],
+								outputRange: [1, 2],
+							}),
+						},
+					],
+					justifyContent: "center",
+					backgroundColor: "transparent",
+				}}
+			>
+				<Image
+					style={styles.startScreen__image}
+					source={require("../../images/sheep.png")}
+				/>
+			</Animated.View>
 			<View style={styles.startScreen__action_container}>
-				<TouchableOpacity onPress={() => navigation.navigate("Game")}>
+				<TouchableOpacity onPress={startPlayButton}>
 					<Text style={styles.text}>Начать игру !</Text>
 				</TouchableOpacity>
 			</View>
