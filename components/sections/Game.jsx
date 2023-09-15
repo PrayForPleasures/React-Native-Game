@@ -2,33 +2,9 @@ import { useState, useEffect } from "react";
 import { TouchableOpacity, Image, StyleSheet, View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { getRandomAnimal } from "../../logic/logic";
 
 const Game = ({ navigation }) => {
-	const animalsDescription = [
-		{
-			id: 1,
-			name: "Лев",
-			img: require("../../images/cowCol.png"),
-		},
-		{
-			id: 2,
-			name: "Белочка",
-			img: require("../../images/cowCol.png"),
-		},
-		{
-			id: 3,
-			name: "Жираф",
-			img: require("../../images/cowCol.png"),
-		},
-		{
-			id: 4,
-			name: "Птичка",
-			img: require("../../images/cowCol.png"),
-		},
-	];
-
-	const [animal, setAnimal] = useState(animalsDescription);
-
 	return (
 		<View style={styles.game__box}>
 			<View style={styles.game__minibox}>

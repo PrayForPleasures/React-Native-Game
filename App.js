@@ -16,7 +16,7 @@ export default function App() {
 					name="First"
 					options={{
 						headerStyle: {
-							backgroundColor: "orange",
+							backgroundColor: "#00ff02",
 						},
 						title: "Начинай играть в весёлую игру !",
 					}}

@@ -1,10 +1,15 @@
 import { TouchableOpacity, StyleSheet, View, Image, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function FirstScreen({ navigation }) {
 	return (
-		<View style={styles.startScreen__box}>
+		<LinearGradient
+			style={styles.startScreen__box}
+			colors={["#00ff02", "#ffffff", "#00ff02"]}
+			start={{ x: 1, y: 0.15 }}
+		>
 			<Image
 				style={styles.startScreen__image}
 				source={require("../../images/sheep.png")}
@@ -14,7 +19,7 @@ export default function FirstScreen({ navigation }) {
 					<Text style={styles.text}>Начать игру !</Text>
 				</TouchableOpacity>
 			</View>
-		</View>
+		</LinearGradient>
 	);
 }
 
@@ -28,7 +33,6 @@ const styles = StyleSheet.create({
 		flexDirection: "column",
 		justifyContent: "space-around",
 		height: "100%",
-		backgroundColor: "orange",
 	},
 	startScreen__image: {
 		resizeMode: "contain",
