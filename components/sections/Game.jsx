@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { TouchableOpacity, Image, StyleSheet, View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -9,15 +10,18 @@ import {
 	questions,
 	smiles,
 } from "../../logic/lists";
+import clickAnswer from "../../logic/logic";
 
 const Game = ({ navigation }) => {
+	const [target, setTarget] = useState({});
+
 	return (
 		<View style={styles.game__box}>
 			<View style={styles.game__minibox}>
 				{renderAnimalFirst.map((el) => (
 					<View style={styles.game__sub_minibox} key={el.id}>
 						<Image style={styles.game__image} key={el.id} source={el.src} />
-						<TouchableOpacity onPress={() => console.log(el.name)}>
+						<TouchableOpacity onPress={() => setTarget(el.id)}>
 							<LinearGradient
 								style={styles.game__gradient}
 								colors={["whitesmoke", "lightgreen"]}
@@ -39,7 +43,7 @@ const Game = ({ navigation }) => {
 			<View style={styles.game__minibox}>
 				{renderAnimalSecond.map((el) => (
 					<View style={styles.game__sub_minibox} key={el.id}>
-						<TouchableOpacity onPress={() => console.log(el.name)}>
+						<TouchableOpacity onPress={() => setTarget(el.id)}>
 							<LinearGradient
 								style={styles.game__gradient}
 								colors={["lightgreen", "whitesmoke"]}
