@@ -10,6 +10,7 @@ import {
 	questions,
 	smiles,
 } from "../../logic/lists";
+import ModalRight from "../modals/ModalRight";
 
 const Game = ({ navigation }) => {
 	const clickAnswer = (el) => {
@@ -36,6 +37,7 @@ const Game = ({ navigation }) => {
 					</View>
 				))}
 			</View>
+			<ModalRight></ModalRight>
 			<View style={styles.game__main_box}>
 				<Text style={styles.game__main_box_text}>
 					{questions.first}
