@@ -10,10 +10,13 @@ import {
 	questions,
 	smiles,
 } from "../../logic/lists";
-import clickAnswer from "../../logic/logic";
 
 const Game = ({ navigation }) => {
-	const [target, setTarget] = useState({});
+	const clickAnswer = (el) => {
+		if (el.id == mainAnimal.id) {
+			console.log(true);
+		} else console.log(false);
+	};
 
 	return (
 		<View style={styles.game__box}>
@@ -21,7 +24,7 @@ const Game = ({ navigation }) => {
 				{renderAnimalFirst.map((el) => (
 					<View style={styles.game__sub_minibox} key={el.id}>
 						<Image style={styles.game__image} key={el.id} source={el.src} />
-						<TouchableOpacity onPress={() => setTarget(el.id)}>
+						<TouchableOpacity onPress={() => clickAnswer(el)}>
 							<LinearGradient
 								style={styles.game__gradient}
 								colors={["whitesmoke", "lightgreen"]}
@@ -43,7 +46,7 @@ const Game = ({ navigation }) => {
 			<View style={styles.game__minibox}>
 				{renderAnimalSecond.map((el) => (
 					<View style={styles.game__sub_minibox} key={el.id}>
-						<TouchableOpacity onPress={() => setTarget(el.id)}>
+						<TouchableOpacity onPress={() => clickAnswer(el)}>
 							<LinearGradient
 								style={styles.game__gradient}
 								colors={["lightgreen", "whitesmoke"]}
