@@ -1,6 +1,6 @@
 // lists
 
-const animalList = [
+export const animalList = [
 	{
 		id: 1,
 		name: "Белочка",
@@ -129,30 +129,3 @@ export const smiles = {
 	whoIsIt: require("../images/think.gif"),
 	goodJob: require("../images/goodJob.gif"),
 };
-
-// functions
-
-const m = {};
-const animalNumber = [];
-const renderAnimal = [];
-
-for (let i = 0; i < 8; i++) {
-	const num = Math.floor(Math.random() * (animalList.length - i));
-	animalNumber.push((num in m ? m[num] : num) + 1);
-	const l = animalList.length - i - 1;
-	m[num] = l in m ? m[l] : l;
-}
-
-animalList.forEach((el) => {
-	animalNumber.forEach((elem) => {
-		if (el.id == elem) {
-			renderAnimal.push(el);
-		}
-	});
-});
-
-const randomAnimal = Math.floor(Math.random() * renderAnimal.length);
-export const mainAnimal = renderAnimal[randomAnimal];
-
-export const renderAnimalFirst = renderAnimal.slice(0, 4);
-export const renderAnimalSecond = renderAnimal.slice(4, 8);
